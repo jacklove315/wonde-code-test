@@ -16,7 +16,7 @@
             <div v-if="!showGetStudentBtn">
                 <template v-for="student in students">
                     <div class="student-profile">
-                        {{student.forename}} {{student.surname}}
+                        <class-student :student="student"></class-student>
                     </div>
                 </template>
             </div>
@@ -25,10 +25,14 @@
 </template>
 <script>
 import moment from 'moment'
+import classStudent from "./classStudent";
 
 export default {
     props: ['clas', 'day'],
     name: 'class',
+    components: {
+        classStudent
+    },
     data() {
         return {
             students: [],

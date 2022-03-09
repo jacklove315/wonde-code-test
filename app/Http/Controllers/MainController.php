@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
-use Wonde\Exceptions\InvalidInputException;
 
 class MainController extends Controller
 {
@@ -30,6 +29,7 @@ class MainController extends Controller
         //connect to wonde SDK client
         $client = new \Wonde\Client(env('WONDE_API_KEY'));
         $school = $client->school('A1930499544');
+
         //get teacher with their classes and lessons
         try {
             $teacherClasses = $school->employees->get($request->id, ['classes.lessons']);
@@ -37,13 +37,8 @@ class MainController extends Controller
             abort(404);
         }
 
-        if (!$teacherClasses) {
-            abort(404);
-        }
-
         //associative array to hold week data
         $classes = array();
-
         //loop through class and divide by day
         foreach ($teacherClasses->classes->data as $tc) {
             foreach ($tc->lessons->data as $lesson) {
@@ -64,8 +59,17 @@ class MainController extends Controller
             }
         }
 
+        //====== sort array Monday-Friday ======//
+        //Template Array
+        $weekTemplate = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
+        foreach ($weekTemplate as $t) {
+            if (array_key_exists($t, $classes)) {
+                $sortedClasses[$t] = $classes[$t];
+            }
+        }
+
         return view('classes')
-            ->with('classes', $classes)
+            ->with('classes', $sortedClasses)
             ->with('teacherName', $teacherClasses->legal_forename . ' ' . $teacherClasses->legal_surname);
     }
 
@@ -100,6 +104,16 @@ class MainController extends Controller
 //        }
 
         return $classStudents->students;
+    }
+
+    /*
+     * Get additional student details
+     */
+    public function getStudentDetails(Request $request)
+    {
+        $client = new \Wonde\Client(env('WONDE_API_KEY'));
+        $school = $client->school('A1930499544');
+        return $school->students->get($request->id, ['extended_details']);
     }
 }
 
