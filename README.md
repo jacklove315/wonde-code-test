@@ -42,8 +42,9 @@ Then run ***php artisan key:generate***
 
 To run the project run the following commands in your terminal (two separate terminal windows)
 
+***npx mix*** - This compiles all the Vue/js files *RUN THIS FIRST
 ***php artisan serve*** - this runs the local server
-***npx mix*** - This compiles all the Vue/js files
+
 
 ## Step 4 - Viewing the project
 
