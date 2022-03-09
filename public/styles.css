@@ -1,0 +1,92 @@
+:root {
+    --vr-blue-primary: #4368FA;
+    --vr-blue-secondary: #27325E;
+    --vr-cream-primary: rgb(255, 234, 227);
+
+    /* fonts */
+    --vr-nav-title: 25px
+}
+body {
+    margin: 0;
+    background-color: var(--vr-cream-primary);
+    font-family: "GT Walsheim", GT Walsheim, sans-serif
+}
+hr {
+    border: 1px solid rgba(212, 212, 212, 0.34);
+}
+
+/* --------- nav --------- */
+.nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 35px 25px 35px;
+    background-color: white;
+    color: var(--vr-blue-secondary);
+}
+
+.nav .title {
+    font-size: var(--vr-nav-title);
+    font-weight: bold;
+}
+
+.nav .help {
+    background-color: var(--vr-blue-primary);
+    color: white;
+    border-radius: 0.75rem;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* --------- main body --------- */
+.main {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.main-container {
+    width: 900px;
+    background-color: whitesmoke;
+    color: var(--vr-blue-secondary);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(196, 196, 196, 0.15);
+    overflow: visible;
+    margin-bottom: 30px;
+}
+.main-container .header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 20px;
+}
+.school-name {
+    color: var(--vr-blue-primary);
+}
+.main-wonde-icon {
+    position: fixed;
+    top: 400px;
+}
+label {
+    font-weight: bold;
+    font-size: 17px;
+}
+/* --------- footer --------- */
+.footer {
+    position: fixed;
+    font-size: 10px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 35px 25px 35px;
+    color: var(--vr-blue-secondary);
+    font-weight: bold;
+}

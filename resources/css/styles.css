@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    background-color: #70abe5;
+}
+:root {
+    --vr-main-blue: #0693e3
+}
+
+/* body */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 10px 10px;
+}
+
+
