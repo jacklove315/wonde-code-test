@@ -2,51 +2,66 @@
 Setting the system up locally
 
 Prior Requirements on your machine 
-(PHP 8^ | Composer 2^ | NPM 7^)
+
+`PHP ^8.0`
+`Composer ^2.0` 
+`NodeJS ^14.0`
 
 ## Step 1 - Pulling the repository down
 
-At the top of this repo, go to 'Code/https' and copy the URL of this repo
+On your local machine, open a terminal in the location of choice
 
-On your local machine, open a terminal and CD to your location of choice
+Then run:
 
-Then type 'git clone https://github.com/jacklove315/wonde-code-test.git'
+`git clone https://github.com/jacklove315/wonde-code-test.git`
 
 ## Step 2 - Setting the project up
 
-After pulling doen the repo, in your terminal CD into ***wonde-code-test***
+After pulling the repo, in your terminal 
 
-We now need to install the system dependecies:
+`cd wonde-code-test`
 
-  run ***'composer install'*** in your terminal - for our PHP dependencies
-  
-  run ***'npm install'*** in your terminal - for our JS dependencies
-  
+We now need to install the system dependencies:
+
+For PHP dependencies run:
+
+`composer install`
+
+For JavaScript dependencies run:
+
+`npm install`
+   
 ## Step 2.1 - Setting .env file 
 
-We need to create an Env file before we run the application
+We need to create an `.env` file before we can the application
 
-Open the project in a code editor of choice and add a .env file to the root directory (wonde-code-test)
+Open the project in a code editor of choice and copy `.env.example` to new `.env` file to the root directory (wonde-code-test)
 
-Copy the contents of the .env.exmaple file into the .env file (this can also be found in the root directory (wonde-code-test)
+You can do that by running this command in the terminal:
+
+`cp .env.example .env`
 
 ## Step 2.2 - Generating Laravel Application key and Wonde API Authorization Key
 
-The Wonde test API key for this project is already set and is stored in the .env.example file under (WONDE_API_KEY)
+The Wonde Test API key for this project is already set and is stored in the `.env.example` file under `WONDE_API_KEY`. 
+You can change it any time to test different keys.
 
-To generate a Laravel Application key, open a terminal and CD to the wonde-code-test directory (your code editor terminal will already be positioned here)
+To generate a Laravel Application key run:
 
-Then run ***php artisan key:generate***
+`php artisan key:generate`
 
 ## Step 3 - Running the Laravel Project
 
-To run the project run the following commands in your terminal (two separate terminal windows)
+To run the project run the following commands in your terminal
 
-***npx mix*** - This compiles all the Vue/js files *RUN THIS FIRST
+First compile JavaScript files by running:
 
-***php artisan serve*** - this runs the local server
+`npx mix`
 
+And lastly run this command to create a local server:
+
+`php artisan serve`
 
 ## Step 4 - Viewing the project
 
-To view the project in your browser, follow the link given in the terminal after running php artisan serve
+To view the project in your browser, follow the link given in the terminal after running `php artisan serve`
