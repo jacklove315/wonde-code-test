@@ -89,4 +89,5 @@ label {
     padding: 25px 35px 25px 35px;
     color: var(--vr-blue-secondary);
     font-weight: bold;
+    z-index: -1;
 }

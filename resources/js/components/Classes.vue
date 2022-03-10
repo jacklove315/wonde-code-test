@@ -8,7 +8,7 @@
                 <!-- single day section -->
                 <div class="day-pane">
                     <div style="padding-bottom: 10px" class="header">
-                        {{ index }} Classes
+                         {{  weekDays[index -1]  }} Classes
                     </div>
                     <!-- looping out all classes in a day into their own component-->
                     <template v-for="classes in day">
@@ -28,15 +28,13 @@ export default {
     components: {
         Class
     },
-    mounted() {
-        // axios.get('/get-teachers')
-        //     .then((res) => {
-        //         this.teachers = res.data.data
-        //         this.isLoading = false;
-        //     })
+    data() {
+        return {
+            weekDays: ['Monday','Tuesday','Wednesday','Thursday', 'Friday']
+        }
     },
     computed: {
-        //------------------------------- My original attempt at filtering data into week days -------------------------------//
+        //------------------------------- My original (dirty) attempt at filtering data into week days -------------------------------//
         // weekdays() {
         //     let Monday = []
         //     let Tuesday = []

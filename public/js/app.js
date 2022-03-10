@@ -5384,13 +5384,12 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Class: _Class__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {// axios.get('/get-teachers')
-    //     .then((res) => {
-    //         this.teachers = res.data.data
-    //         this.isLoading = false;
-    //     })
+  data: function data() {
+    return {
+      weekDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    };
   },
-  computed: {//------------------------------- My original attempt at filtering data into week days -------------------------------//
+  computed: {//------------------------------- My original (dirty) attempt at filtering data into week days -------------------------------//
     // weekdays() {
     //     let Monday = []
     //     let Tuesday = []
@@ -5580,22 +5579,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['student'],
   name: "class-student",
   data: function data() {
     return {
       extendedDetails: null,
-      showExtended: false
+      showExtended: false,
+      isLoading: false
     };
   },
   methods: {
     getExtendedDetails: function getExtendedDetails() {
       var _this = this;
 
+      this.isLoading = true;
       axios.get('/students/' + this.student.id + '/extended-details').then(function (res) {
         _this.extendedDetails = res.data.extended_details.data;
         _this.showExtended = true;
+        _this.isLoading = false;
       });
     }
   }
@@ -50937,8 +50942,8 @@ var render = function () {
                       },
                       [
                         _vm._v(
-                          "\n                    " +
-                            _vm._s(index) +
+                          "\n                     " +
+                            _vm._s(_vm.weekDays[index - 1]) +
                             " Classes\n                "
                         ),
                       ]
@@ -51087,10 +51092,19 @@ var render = function () {
             _vm._s(_vm.student.forename) +
             " " +
             _vm._s(_vm.student.surname) +
-            "\n    "
+            " "
         ),
+        _c("span", { staticStyle: { "font-size": "11px" } }, [
+          _vm._v("- details"),
+        ]),
       ]
     ),
+    _vm._v(" "),
+    _vm.isLoading
+      ? _c("div", { staticStyle: { "font-size": "11px" } }, [
+          _vm._v("\n        Loading...\n    "),
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _vm.showExtended
       ? _c("div", { staticClass: "extended-details" }, [
@@ -51106,51 +51120,51 @@ var render = function () {
           _vm.extendedDetails
             ? _c("b", [
                 _vm._v(
-                  "\n            dietary needs " +
+                  "\n            dietary needs: " +
                     _vm._s(
                       _vm.extendedDetails["dietary_needs"]
                         ? _vm.extendedDetails["dietary_needs"]
-                        : "N/a"
+                        : "-"
                     ) +
                     "\n            "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n            first language " +
+                  "\n            first language: " +
                     _vm._s(
                       _vm.extendedDetails["first_language"]
                         ? _vm.extendedDetails["first_language"]
-                        : "N/a"
+                        : "-"
                     ) +
                     "\n            "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n            free school meals " +
+                  "\n            free school meals: " +
                     _vm._s(
                       _vm.extendedDetails["free_school_meals"]
                         ? _vm.extendedDetails["free_school_meals"]
-                        : "N/a"
+                        : "-"
                     ) +
                     "\n            "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n            in care details " +
+                  "\n            in care details: " +
                     _vm._s(
                       _vm.extendedDetails["in_care_details"]
                         ? _vm.extendedDetails["in_care_details"]
-                        : "N/a"
+                        : "-"
                     ) +
                     "\n            "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n            paramedical support " +
+                  "\n            paramedical support: " +
                     _vm._s(
                       _vm.extendedDetails["paramedical_support"]
                         ? _vm.extendedDetails["paramedical_support"]
-                        : "N/a"
+                        : "-"
                     ) +
                     "\n            "
                 ),

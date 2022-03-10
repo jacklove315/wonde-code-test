@@ -12,9 +12,11 @@
         <div class="title">
             Wonde Code Test
         </div>
-        <div class="help">
-            Wonde
-        </div>
+        <a style="text-decoration: none; color: inherit;" href="/">
+            <div class="help">
+                Wonde
+            </div>
+        </a>
     </div>
 
     <!-- main -->
